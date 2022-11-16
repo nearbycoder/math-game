@@ -5,7 +5,7 @@ import Game from '../components/Game';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
-  const [num, setNum] = useState(null);
+  const [num, setNum] = useState<number | null>(null);
 
   return (
     <div>

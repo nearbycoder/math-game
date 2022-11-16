@@ -7,9 +7,9 @@ export default function Game({ num = 3 }: { num?: number }) {
       answer: (i + 1) * num,
     };
   });
-  const [randomIndex, setRandomIndex] = useState(0);
-  const [randomAnswers, setRandomAnswers] = useState([]);
-  const [badAnswers, setBadAnswers] = useState([]);
+  const [randomIndex, setRandomIndex] = useState<number>(0);
+  const [randomAnswers, setRandomAnswers] = useState<number[]>([]);
+  const [badAnswers, setBadAnswers] = useState<number[]>([]);
   const [answers, setAnswers] = useState<
     {
       question: string;
