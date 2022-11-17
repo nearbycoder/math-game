@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
 import Game from '../components/Game';
-import styles from '../styles/Home.module.css';
+import Link from 'next/link';
 
 export default function Home() {
-  const [num, setNum] = useState<number | null>(null);
-
   return (
     <div>
       <Head>
@@ -15,28 +12,28 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="fixed  w-screen">
+      <div className="fixed w-screen">
         <main className="flex justify-center items-center h-screen max-h-full overflow-hidden relative -mt-24">
-          {!num && (
-            <div>
-              <p className="text-sm md:text-2xl p-4 text-center">
-                Pick a number to multiply by:
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-8">
-                {[...Array(10).keys()].map((num) => (
-                  <button
-                    onClick={() => {
-                      setNum(num + 1);
-                    }}
-                    className={`border rounded text-md md:text-5xl p-4`}
-                    key={num}>
-                    {num + 1}
-                  </button>
-                ))}
-              </div>
+          <div>
+            <p className="text-sm md:text-2xl p-4 text-center">
+              Pick a operator
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8">
+              {[
+                { symbol: '+', name: 'add' },
+                { symbol: '-', name: 'subtract' },
+                { symbol: '×', name: 'multiply' },
+                { symbol: '÷', name: 'divide' },
+              ].map((operator) => (
+                <Link
+                  href={`/${operator.name}`}
+                  className={`border rounded text-md md:text-5xl p-4 text-center`}
+                  key={operator.name}>
+                  {operator.symbol}
+                </Link>
+              ))}
             </div>
-          )}
-          {num && <Game num={num} />}
+          </div>
         </main>
       </div>
     </div>
