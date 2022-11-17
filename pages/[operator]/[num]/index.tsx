@@ -13,12 +13,12 @@ export default function Num() {
 
   return (
     <div className="fixed w-screen">
-      <main className="flex justify-center items-center h-screen max-h-full overflow-hidden relative -mt-24">
+      <main className="flex flex-col justify-center items-center h-screen max-h-full overflow-hidden relative -mt-24">
         <Game operator={String(operator)} num={Number(num)} />
+        <div className="text-center mt-12">
+          <Link href="/">Back To Menu</Link>
+        </div>
       </main>
-      <div className="text-center">
-        <Link href="/">Back To Menu</Link>
-      </div>
     </div>
   );
 }
