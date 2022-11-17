@@ -1,4 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import Confetti from 'react-dom-confetti';
+
+const config = {
+  angle: 180,
+  spread: 360,
+  startVelocity: 40,
+  elementCount: 120,
+  dragFriction: 0.12,
+  duration: 3000,
+  stagger: 3,
+  width: '10px',
+  height: '10px',
+  colors: ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6'],
+};
 
 export default function Game({ num = 3 }: { num?: number }) {
   const logic = [...Array(10).keys()].map((i) => {
@@ -17,6 +31,7 @@ export default function Game({ num = 3 }: { num?: number }) {
       correct?: boolean;
     }[]
   >([]);
+  const [confetti, setConfetti] = useState<boolean>(false);
 
   const getRandomIndex = () => Math.floor(Math.random() * 10);
 
@@ -46,6 +61,9 @@ export default function Game({ num = 3 }: { num?: number }) {
       </div>
       <div className="text-4xl md:text-9xl text-center p-4">
         {currentQuestion.question}
+        <div className="flex justify-center items-center">
+          <Confetti active={confetti} config={config} />
+        </div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-8">
         {randomAnswers.map((answer) => (
@@ -58,6 +76,11 @@ export default function Game({ num = 3 }: { num?: number }) {
 
               if (correct) {
                 resetQuestion();
+
+                setConfetti(true);
+                setTimeout(() => {
+                  setConfetti(false);
+                }, 500);
               } else {
                 setBadAnswers((badAnswers) => [...badAnswers, answer]);
               }
