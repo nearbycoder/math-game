@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Confetti from 'react-dom-confetti';
+import { operators } from '../lib/operators';
 
 const config = {
   angle: 180,
@@ -13,13 +14,6 @@ const config = {
   height: '10px',
   colors: ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6'],
 };
-
-const operators = [
-  { symbol: '+', name: 'add' },
-  { symbol: '-', name: 'subtract' },
-  { symbol: '×', name: 'multiply' },
-  { symbol: '÷', name: 'divide' },
-];
 
 export default function Game({
   num,

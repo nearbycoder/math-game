@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import Head from 'next/head';
-import Game from '../components/Game';
 import Link from 'next/link';
+import { operators } from '../lib/operators';
 
 export default function Home() {
   return (
@@ -19,12 +18,7 @@ export default function Home() {
               Pick a operator
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8">
-              {[
-                { symbol: '+', name: 'add' },
-                { symbol: '-', name: 'subtract' },
-                { symbol: '×', name: 'multiply' },
-                { symbol: '÷', name: 'divide' },
-              ].map((operator) => (
+              {operators.map((operator) => (
                 <Link
                   href={`/${operator.name}`}
                   className={`border rounded text-md md:text-5xl p-4 text-center`}
