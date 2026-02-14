@@ -1,0 +1,240 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka:wght@400;500;600;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --mq-green: #58CC02;
+  --mq-green-dark: #46a302;
+  --mq-gold: #FFD900;
+  --mq-red: #FF4B4B;
+  --mq-blue: #1CB0F6;
+  --mq-purple: #CE82FF;
+  --mq-orange: #FF9600;
+  --mq-bg: #F7F7F7;
+  --mq-card-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --mq-card-shadow-hover: 0 8px 30px rgba(0,0,0,0.1);
+
+  --background: #F7F7F7;
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: #58CC02;
+  --primary-foreground: #ffffff;
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: #58CC02;
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground m-0;
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ─── FONTS ─────────────────────────────────────────────────── */
+.font-display {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+/* ─── BACKGROUNDS ───────────────────────────────────────────── */
+.math-game-bg {
+  background-color: var(--mq-bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(88, 204, 2, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(28, 176, 246, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(206, 130, 255, 0.03) 0%, transparent 50%);
+}
+
+/* ─── CARDS ─────────────────────────────────────────────────── */
+.shadow-card {
+  box-shadow: var(--mq-card-shadow);
+}
+.shadow-card-hover {
+  box-shadow: var(--mq-card-shadow-hover);
+}
+
+.onboarding-card {
+  background: white;
+  border-radius: 2rem;
+  padding: 2.5rem;
+  box-shadow: var(--mq-card-shadow-hover);
+}
+
+/* ─── BUTTONS ───────────────────────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(180deg, #58CC02 0%, #46a302 100%);
+  box-shadow: 0 4px 0 #3d8e02, 0 6px 20px rgba(88, 204, 2, 0.3);
+  transition: all 0.15s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #3d8e02, 0 8px 25px rgba(88, 204, 2, 0.35);
+}
+.btn-primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #3d8e02, 0 3px 10px rgba(88, 204, 2, 0.2);
+}
+
+/* ─── ANSWER BUTTONS ────────────────────────────────────────── */
+.answer-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  border: 2.5px solid #E5E5E5;
+  background: white;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #374151;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 3px 0 #E5E5E5;
+}
+.answer-btn:hover:not(:disabled) {
+  border-color: #1CB0F6;
+  background: #F0F9FF;
+  box-shadow: 0 3px 0 #1CB0F6;
+}
+.answer-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+.answer-correct {
+  border-color: #58CC02 !important;
+  background: #F0FFF0 !important;
+  box-shadow: 0 3px 0 #46a302 !important;
+  color: #2D7A00 !important;
+}
+.answer-wrong {
+  border-color: #FF4B4B !important;
+  background: #FFF0F0 !important;
+  box-shadow: 0 3px 0 #E03E3E !important;
+  color: #CC0000 !important;
+}
+.answer-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.answer-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: #F3F4F6;
+  color: #9CA3AF;
+  font-weight: 800;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+/* ─── ANIMATIONS ────────────────────────────────────────────── */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-confetti {
+  animation: confetti-fall linear forwards;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* ─── SCROLLBAR ─────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
