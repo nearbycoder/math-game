@@ -35,6 +35,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          defer
+          data-domain="math.nrby.xyz"
+          src="https://tic.nrby.xyz/js/script.js"
+        ></script>
       </head>
       <body>
         {children}
